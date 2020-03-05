@@ -1,0 +1,107 @@
+Respostas:
+
+b) Altere todas as consultas do médico 123 para o médico 245;
+
+
+update consulta
+
+SET CrmMed = 245
+
+where CrmMed = 123
+
+c) Exclua todos os hospitais da cidade de Torres;
+
+DELETE FROM hospital
+
+
+WHERE Cidade='Torres';
+
+
+
+
+d) Altere o telefone da paciente Rosane Peireira para 982334510;
+
+update paciente
+
+
+SET Telefone = '982334510'
+
+
+where Nome = 'Rosane Pereira';
+
+
+
+e) Exclua todas as consultas do paciente de cpf 4444444444 realizadas com o médico de
+CRM 123;
+
+DELETE FROM consulta
+
+
+WHERE cpfPac='4444444444' and CrmMed = '123';
+
+
+(COMENTARIO: em produção não excluiu pois nao tem nenhuma consulta com o crm 123 devido a questao B)
+
+
+
+
+f) Exclua todas as consultas do mês de fevereiro;
+
+DELETE FROM consulta
+
+
+WHERE Data between '2018-02-01' and '2018-02-28';
+	ou
+WHERE Data >='2018-02-01' and Data <= '2018-02-28';
+
+
+
+
+
+g) Altere as consultas do dia 18 de março de 2018 para a data de 19 de março de 2018;
+
+update consulta
+
+
+SET Data = '2018-03-19'
+
+
+where Data = '2018-03-18';
+
+
+
+
+
+
+
+h) Altere as especialidades da área clinica, inserindo como área “clínica médica”;
+
+update especialidade
+
+SET Area = 'Clinica Medica'
+
+WHERE Area = 'Clinica';
+
+
+
+
+i) Para os médicos que não tem hospital cadastrado, insira o código do hospital Clínicas em
+seu cadastro.
+
+update medico
+
+SET cnpjHosp = '12334455'
+
+
+WHERE cnpjHosp is null;
+
+
+
+
+
+
+
+
+
+
+

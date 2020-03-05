@@ -18,32 +18,29 @@ USE `hospital`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `medico`
+-- Table structure for table `hospital`
 --
 
-DROP TABLE IF EXISTS `medico`;
+DROP TABLE IF EXISTS `hospital`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `medico` (
-  `CRM` int(11) NOT NULL,
-  `CPF` varchar(14) NOT NULL,
+CREATE TABLE `hospital` (
+  `CNPJ` int(11) NOT NULL,
   `Nome` varchar(20) NOT NULL,
-  `Telefone` varchar(20) DEFAULT NULL,
-  `cnpjHosp` int(11) DEFAULT NULL,
-  PRIMARY KEY (`CRM`),
-  KEY `MedicoHospital` (`cnpjHosp`),
-  CONSTRAINT `MedicoHospital` FOREIGN KEY (`cnpjHosp`) REFERENCES `hospital` (`CNPJ`) ON DELETE SET NULL ON UPDATE CASCADE
+  `Cidade` varchar(20) NOT NULL,
+  `Telefone` varchar(20) NOT NULL,
+  PRIMARY KEY (`CNPJ`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `medico`
+-- Dumping data for table `hospital`
 --
 
-LOCK TABLES `medico` WRITE;
-/*!40000 ALTER TABLE `medico` DISABLE KEYS */;
-INSERT INTO `medico` VALUES (123,'02302450501','Jorge Luiz',NULL,NULL),(245,'1111111111','Ana Lucia Braga',NULL,NULL),(457,'22222222222','Bianca Machado',NULL,12345678),(566,'33333333333','Luis Prestes',NULL,12345678);
-/*!40000 ALTER TABLE `medico` ENABLE KEYS */;
+LOCK TABLES `hospital` WRITE;
+/*!40000 ALTER TABLE `hospital` DISABLE KEYS */;
+INSERT INTO `hospital` VALUES (12334455,'Clinicas','Porto Alegre','31314040'),(12345678,'São Lucas','Porto Alegre','32321010'),(23456789,' Nossa Senhora','Torres','34345050');
+/*!40000 ALTER TABLE `hospital` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -55,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-20 21:25:21
+-- Dump completed on 2019-03-20 21:25:25

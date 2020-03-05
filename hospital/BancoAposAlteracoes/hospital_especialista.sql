@@ -1,15 +1,15 @@
-CREATE DATABASE  IF NOT EXISTS `hospital` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE  IF NOT EXISTS `hospital` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
 USE `hospital`;
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.15, for Win64 (x86_64)
 --
--- Host: localhost    Database: hospital
+-- Host: 127.0.0.1    Database: hospital
 -- ------------------------------------------------------
--- Server version	5.7.17-log
+-- Server version	8.0.15
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+ SET NAMES utf8 ;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -18,28 +18,30 @@ USE `hospital`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cidades`
+-- Table structure for table `especialista`
 --
 
-DROP TABLE IF EXISTS `cidades`;
+DROP TABLE IF EXISTS `especialista`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cidades` (
-  `Ccod` int(11) NOT NULL,
-  `Nome` varchar(50) DEFAULT NULL,
-  `UF` varchar(2) DEFAULT NULL,
-  PRIMARY KEY (`Ccod`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `especialista` (
+  `codEsp` int(11) NOT NULL,
+  `CrmMed` int(11) NOT NULL,
+  PRIMARY KEY (`CrmMed`,`codEsp`),
+  KEY `EspecialistaEspecialidade` (`codEsp`),
+  CONSTRAINT `EspecialistaEspecialidade` FOREIGN KEY (`codEsp`) REFERENCES `especialidade` (`Cod`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `EspecialistaMedico` FOREIGN KEY (`CrmMed`) REFERENCES `medico` (`CRM`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cidades`
+-- Dumping data for table `especialista`
 --
 
-LOCK TABLES `cidades` WRITE;
-/*!40000 ALTER TABLE `cidades` DISABLE KEYS */;
-INSERT INTO `cidades` VALUES (1,'osório','RS'),(2,'PORTO ALEGRE','RS'),(3,'CANOAS','RS'),(4,'FLORIANÓPOLIS','SC'),(5,'CURITIBA','PR');
-/*!40000 ALTER TABLE `cidades` ENABLE KEYS */;
+LOCK TABLES `especialista` WRITE;
+/*!40000 ALTER TABLE `especialista` DISABLE KEYS */;
+INSERT INTO `especialista` VALUES (1,123),(2,457),(3,245),(3,566),(4,245);
+/*!40000 ALTER TABLE `especialista` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-29 21:11:34
+-- Dump completed on 2019-03-20 22:26:20
